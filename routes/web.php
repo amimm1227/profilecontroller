@@ -31,6 +31,7 @@ Route::controller(AAAController::class)->prefix('XXX')->group(function() {
 //課題4
 use App\Http\Controllers\Admin\ProfileController;
 Route::controller(ProfileController::class)->prefix('admin')->group(function() {
-    Route::get('admin/profire/create','add');
-    Route::get('admin/profire/edit','edit');
+    Route::get('profile/create','create');
+    Route::get('profile/edit','edit');
 });
+
