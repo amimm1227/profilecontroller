@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Models\Profile;
+
 class ProfileController extends Controller
 {
     public function __construct()
@@ -18,10 +20,19 @@ class ProfileController extends Controller
         return view('admin.profile.create');
     }
     
-    public function create()
+    public function create(Request $request)
     {
+        $this->validate($request, Profile::$rules);
+        $profile = new Profile;
+        $form = $request->all();
+        
         return redirect('admin/profile/create');
     }
+    
+    // unset($form['_token']);
+    
+    // $profile->fill($form);
+    // $profile->save();
     
     public function edit()
     {
