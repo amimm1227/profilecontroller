@@ -9,12 +9,14 @@ class Profile extends Model
 {
     use HasFactory;
     
+    protected $table = 'profile';
+    
     protected $guarded = array('id');
     
     public static $rules = array(
         'name' => 'required',
         'gender' => 'required',
         'hobby' => 'required',
-        'introduction' => 'required'
+        'introduction' => 'required',
         );
 }
