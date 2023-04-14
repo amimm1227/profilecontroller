@@ -27,14 +27,7 @@ Route::controller(NewsController::class)->prefix('admin')->name('admin.')->middl
     Route::get('news/delete', 'delete')->name('news.delete');
 });
 
-//課題3
-// use App\Http\Controllers\Admin\AAAController;
-// Route::controller(AAAController::class)->group(function() {
-//     Route::get('xxx','bbb');
-// });
 
-
-//課題4
 use App\Http\Controllers\Admin\ProfileController;
 Route::controller(ProfileController::class)->prefix('admin')->name('admin.')->middleware('auth')->group(function() {
     Route::get('profile/create','add')->name('profile.add');
@@ -48,6 +41,3 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::controller(NewsController::class)->prefix('admin')->group(function(){
-//     Route::get('news/create','add')->middleware('auth');
-// });
