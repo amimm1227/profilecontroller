@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 // use Illuminate\Support\Facades\Auth;
 
 use App\Models\Profile;
-use App\Models\History;
+use App\Models\Profile_history;
 use Carbon\Carbon;
 
 class ProfileController extends Controller
@@ -51,12 +51,12 @@ class ProfileController extends Controller
 
         $profile->fill($profile_form)->save();
         
-        $history = new History();
+        $history = new Profile_history();
         $history->profile_id = $profile->id;
         $history->edited_at = Carbon::now();
         $history->save();
 
-        return redirect('admin/profile/edit');
+        return redirect('admin/profile/edit?id=' . $profile->id);
     }
 
     public function delete(Request $request)

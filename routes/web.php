@@ -30,6 +30,7 @@ Route::controller(NewsController::class)->prefix('admin')->name('admin.')->middl
 
 use App\Http\Controllers\Admin\ProfileController;
 Route::controller(ProfileController::class)->prefix('admin')->name('admin.')->middleware('auth')->group(function() {
+    Route::get('profile', 'index')->name('profile.index');
     Route::get('profile/create','add')->name('profile.add');
     Route::get('profile/edit','edit')->name('profile.edit');
     Route::post('profile/create','create')->name('profile.create');
@@ -41,3 +42,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+use App\Http\Controllers\NewsController as PublicNewsController;
+Route::get('/', [PublicNewsController::class, 'index'])->name('news.index');
+
+use App\Http\Controllers\ProfileController as PublicProfileController;
+Route::get('/profile', [PublicProfileController::class, 'index'])->name('profile.index');
